@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>softlite-document fometer - built 100 2027</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Google Fonts for rich typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="theme-light">
+  <div id="app-container">
+
+    <!-- Top Window Titlebar -->
+    <header id="titlebar">
+      <div class="titlebar-left">
+        <div class="app-logo">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+          <span class="app-title-text">softlite-document fometer</span>
+          <span class="app-version-badge">v100.2027</span>
+        </div>
+
+        <!-- Quick Access Toolbar -->
+        <div class="quick-access">
+          <button class="qa-btn" id="qa-new" title="New / Templates (Ctrl+N)">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M12 18v-6"/><path d="M9 15h6"/></svg>
+          </button>
+          <button class="qa-btn" id="qa-save" title="Save Document (Ctrl+S)">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+          </button>
+          <button class="qa-btn" id="qa-undo" title="Undo (Ctrl+Z)">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"/></svg>
+          </button>
+          <button class="qa-btn" id="qa-redo" title="Redo (Ctrl+Y)">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 7v6h-6"/><path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3L21 13"/></svg>
+          </button>
+          <button class="qa-btn" id="qa-print" title="Print / PDF (Ctrl+P)">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="titlebar-center">
+        <span id="doc-title" contenteditable="true" spellcheck="false" title="Click to rename document">Untitled Document - Softlite</span>
+      </div>
+
+      <div class="titlebar-right">
+        <button class="title-action-btn" id="btn-blue-plugin-quick" title="Toggle Softlite Blue Theme">
+          <span class="color-dot blue-dot"></span> Blue Theme
+        </button>
+        <button class="title-action-btn" id="btn-open-about" title="About softlite-document fometer & License">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          About
+        </button>
+      </div>
+    </header>
+
+    <!-- Ribbon Navigation Tabs Bar -->
+    <nav id="ribbon-tabs">
+      <button class="ribbon-tab active-tab" data-tab="tab-home">Home</button>
+      <button class="ribbon-tab" data-tab="tab-insert">Insert</button>
+      <button class="ribbon-tab" data-tab="tab-draw">Draw</button>
+      <button class="ribbon-tab" data-tab="tab-forms">Forms</button>
+      <button class="ribbon-tab" data-tab="tab-references">References</button>
+      <button class="ribbon-tab" data-tab="tab-layout">Layout</button>
+      <button class="ribbon-tab" data-tab="tab-design">Design</button>
+      <button class="ribbon-tab" data-tab="tab-view">View</button>
+      <button class="ribbon-tab" data-tab="tab-plugins">Plugins</button>
+      <button class="ribbon-tab" data-tab="tab-settings">Settings</button>
+      <button class="ribbon-tab file-tab-btn" id="btn-file-menu">File / Templates</button>
+    </nav>
+
+    <!-- Ribbon Content Panels -->
+    <div id="ribbon-content">
+
+      <!-- ================= HOME TAB ================= -->
+      <div class="ribbon-panel active-panel" id="tab-home">
+        <!-- Clipboard Group -->
+        <div class="ribbon-group">
+          <div class="ribbon-group-content flex-row">
+            <button class="ribbon-btn big-btn" id="btn-paste" title="Paste (Ctrl+V)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+              <span>Paste</span>
+            </button>
+            <div class="flex-col">
+              <button class="ribbon-btn small-btn" id="btn-cut" title="Cut (Ctrl+X)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+                <span>Cut</span>
+              </button>
+              <button class="ribbon-btn small-btn" id="btn-copy" title="Copy (Ctrl+C)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Copy</span>
+              </button>
+              <button class="ribbon-btn small-btn" id="btn-copy-style" title="Copy Style / Format Painter">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m19 11-8-8-8.6 8.6a2 2 0 0 0 0 2.8l5.2 5.2c.8.8 2 .8 2.8 0L19 11Z"/><path d="m5 2 5 5"/><path d="M2 13h15"/><path d="M22 20a2 2 0 1 1-4 0c0-1.6 1.7-2.4 2-4 .3 1.6 2 2.4 2 4Z"/></svg>
+                <span>Format Painter</span>
+              </button>
+            </div>
+          </div>
+          <span class="group-label">Clipboard</span>
+        </div>
+
+        <!-- Font Group -->
+        <div class="ribbon-group">
+          <div class="ribbon-group-content flex-col">
+            <!-- Row 1: Font selector, size & inc/dec -->
+            <div class="flex-row items-center gap-4">
+              <select id="font-family" class="ribbon-select font-select" title="Font Family">
+                <option value="Inter, sans-serif" selected>Inter</option>
+                <option value="'Roboto', sans-serif">Roboto</option>
+                <option value="'Poppins', sans-serif">Poppins</option>
+                <option value="'Merriweather', serif">Merriweather</option>
+                <option value="'Playfair Display', serif">Playfair Display</option>
+                <option value="Arial, sans-serif">Arial</option>
+                <option value="'Times New Roman', serif">Times New Roman</option>
+                <option value="'Courier New', monospace">Courier New</option>
+                <option value="'Fira Code', monospace">Fira Code</option>
+                <option value="Georgia, serif">Georgia</option>
+                <option value="Calibri, sans-serif">Calibri</option>
+                <option value="Verdana, sans-serif">Verdana</option>
+              </select>
+
+              <select id="font-size" class="ribbon-select size-select" title="Font Size">
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="14">14</option>
+                <option value="16" selected>16</option>
+                <option value="18">18</option>
+                <option value="20">20</option>
+                <option value="24">24</option>
+                <option value="28">28</option>
+                <option value="32">32</option>
+                <option value="36">36</option>
+                <option value="48">48</option>
+                <option value="72">72</option>
+              </select>
+
+              <!-- Required shortcuts: Alt+Ctrl+A (Increment) and Alt+Ctrl+S (Decrement) -->
+              <button class="ribbon-icon-btn" id="btn-font-inc" title="Increment Font Size (Alt+Ctrl+A)">
+                <span class="icon-text">A<sup>+</sup></span>
+              </button>
+              <button class="ribbon-icon-btn" id="btn-font-dec" title="Decrement Font Size (Alt+Ctrl+S)">
+                <span class="icon-text">A<sup>-</sup></span>
+              </button>
+
+              <button class="ribbon-icon-btn" id="btn-clear-style" title="Clear All Formatting">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/><line x1="19" y1="19" x2="22" y2="22"/><line x1="22" y1="19" x2="19" y2="22"/></svg>
+              </button>
+            </div>
+
+            <!-- Row 2: Bold, Italic, Underline, Strikethrough, Font color, Highlight -->
+            <div class="flex-row items-center gap-4">
+              <button class="ribbon-icon-btn font-weight-bold" id="btn-bold" title="Bold (Ctrl+B)">
+                <strong>B</strong>
+              </button>
+              <button class="ribbon-icon-btn font-style-italic" id="btn-italic" title="Italic (Ctrl+I)">
+                <em>I</em>
+              </button>
+              <button class="ribbon-icon-btn font-underline" id="btn-underline" title="Underline (Ctrl+U)">
+                <u>U</u>
+              </button>
+              <button class="ribbon-icon-btn" id="btn-strikethrough" title="Strikethrough">
+                <s>S</s>
+              </button>
+
+              <div class="color-picker-wrap" title="Font Color">
+                <label for="font-color-picker" class="picker-label">
+                  <span class="color-indicator-letter">A</span>
+                  <span class="color-bar" id="font-color-bar"></span>
+                </label>
+                <input type="color" id="font-color-picker" value="#1e293b">
+              </div>
+
+              <div class="color-picker-wrap" title="Highlight Color">
+                <label for="highlight-color-picker" class="picker-label">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 11-6 6v3h3l6-6"/><path d="m22 12-4.6 4.6a2 2 0 0 1-2.8 0l-5.2-5.2a2 2 0 0 1 0-2.8L14 4"/></svg>
+                  <span class="color-bar highlight-bar" id="highlight-color-bar"></span>
+                </label>
+                <input type="color" id="highlight-color-picker" value="#fef08a">
+              </div>
+            </div>
+          </div>
+          <span class="group-label">Font</span>
+        </div>
+
+        <!-- Paragraph Group -->
+        <div class="ribbon-group">
+          <div class="ribbon-group-content flex-col">
+            <!-- Row 1: Align Left (Ctrl+L), Center (Ctrl+E), Right (Ctrl+R), Justify (Ctrl+J) -->
+            <div class="flex-row items-center gap-4">
+              <button class="ribbon-icon-btn" id="btn-align-left" title="Align Left (Ctrl+L)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="17" y1="10" x2="3" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="17" y1="18" x2="3" y2="18"/></svg>
+              </button>
+              <button class="ribbon-icon-btn" id="btn-align-center" title="Align Center (Ctrl+E)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="10" x2="6" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="18" y1="18" x2="6" y2="18"/></svg>
+              </button>
+              <button class="ribbon-icon-btn" id="btn-align-right" title="Align Right (Ctrl+R)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="21" y1="10" x2="7" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="21" y1="18" x2="7" y2="18"/></svg>
+              </button>
+              <button class="ribbon-icon-btn" id="btn-align-justify" title="Justify (Ctrl+J)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="21" y1="10" x2="3" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="21" y1="18" x2="3" y2="18"/></svg>
+              </button>
+
+              <button class="ribbon-icon-btn" id="btn-list-bullet" title="Bulleted List">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+              </button>
+              <button class="ribbon-icon-btn" id="btn-list-num" title="Numbered List">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="10" y1="6" x2="21" y2="6"/><line x1="10" y1="12" x2="21" y2="12"/><line x1="10" y1="18" x2="21" y2="18"/><path d="M4 6h1v4"/><path d="M4 10h2"/><path d="M6 18H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+              </button>
+            </div>
+
+            <!-- Row 2: Shading, Border, Indents, Line Spacing -->
+            <div class="flex-row items-center gap-4">
+              <div class="color-picker-wrap" title="Shading (Paragraph Background)">
+                <label for="shading-color-picker" class="picker-label">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m19 11-8-8-8.6 8.6a2 2 0 0 0 0 2.8l5.2 5.2c.8.8 2 .8 2.8 0L19 11Z"/><path d="M22 20a2 2 0 1 1-4 0c0-1.6 1.7-2.4 2-4 .3 1.6 2 2.4 2 4Z"/></svg>
+                </label>
+                <input type="color" id="shading-color-picker" value="#f1f5f9">
+              </div>
+
+              <!-- Border options -->
+              <select id="border-picker" class="ribbon-select border-select" title="Apply Border">
+                <option value="none">No Border</option>
+                <option value="all">All Borders</option>
+                <option value="box">Box Border</option>
+                <option value="bottom">Bottom Border</option>
+                <option value="left-callout">Left Callout Border</option>
+              </select>
+
+              <button class="ribbon-icon-btn" id="btn-outdent" title="Decrease Indent">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="7 8 3 12 7 16"/><line x1="21" y1="12" x2="11" y2="12"/><line x1="21" y1="6" x2="11" y2="6"/><line x1="21" y1="18" x2="11" y2="18"/></svg>
+              </button>
+              <button class="ribbon-icon-btn" id="btn-indent" title="Increase Indent">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 8 21 12 17 16"/><line x1="3" y1="12" x2="13" y2="12"/><line x1="3" y1="6" x2="13" y2="6"/><line x1="3" y1="18" x2="13" y2="18"/></svg>
+              </button>
+            </div>
+          </div>
+          <span class="group-label">Paragraph</span>
+        </div>
+
+        <!-- Styles / Heading Quick Palette -->
+        <div class="ribbon-group">
+          <div class="ribbon-group-content flex-row gap-4">
+            <button class="quick-style-btn" data-tag="p" title="Normal text">
+              <span class="style-preview">Normal</span>
+            </button>
+            <button class="quick-style-btn" data-tag="h1" title="Heading 1">
+              <span class="style-preview font-bold text-lg">Heading 1</span>
+            </button>
+            <button class="quick-style-btn" data-tag="h2" title="Heading 2">
+              <span class="style-preview font-semibold text-md">Heading 2</span>
+            </button>
+            <button class="quick-style-btn" data-tag="h3" title="Heading 3">
+              <span class="style-preview italic text-sm">Heading 3</span>
+            </button>
+          </div>
+          <span class="group-label">Styles</span>
+        </div>
+
+        <!-- Editing & File Group (Find, Replace, Save, Print) -->
+        <div class="ribbon-group">
+          <div class="ribbon-group-content flex-row">
+            <div class="flex-col">
+              <button class="ribbon-btn small-btn" id="btn-find" title="Find in Document (Ctrl+F)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <span>Find</span>
+              </button>
+              <button class="ribbon-btn small-btn" id="btn-replace" title="Replace (Ctrl+H)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m14 12 5 5 5-5"/><path d="M19 17V3"/><path d="m10 12-5-5-5 5"/><path d="M5 7v14"/></svg>
+                <span>Replace</span>
+              </button>
+            </div>
+            <div class="flex-col">
+              <button class="ribbon-btn small-btn" id="btn-save-ribbon" title="Save File (Ctrl+S)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                <span>Save</span>
+              </button>
+              <button class="ribbon-btn small-btn" id="btn-print-ribbon" title="Print / PDF (Ctrl+P)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                <span>Print</span>
+              </button>
+            </div>
+          </div>
+          <span class="group-label">Editing & Output</span>
+        </div>
+      </div>
+
+      <!-- ================= INSERT TAB ================= -->
+      <div class="ribbon-panel" id="tab-insert">
+        <!-- Tables -->
+        <div class="ribbon-group">
+          <div class="ribbon-group-content">
+            <button class="ribbon-btn big-btn" id="btn-insert-table" title="Insert Customizable Table">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/><path d="M15 3v18"/></svg>
+              <span>Table</span>
+            </button>
+          </div>
+          <span class="group-label">Tables</span>
+        </div>
+
+        <!-- Illustrations: Image, Shape, Chart, SmartArt, Text Box, WordArt, Symbols -->
+        <div class="ribbon-group">
+          <div class="ribbon-group-content flex-row gap-6">
+            <button class="ribbon-btn big-btn" id="btn-insert-image" title="Upload or link an image">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <span>Image</span>
+            </button>
+            <button class="ribbon-btn big-btn" id="btn-insert-shape" title="Insert Vector Shapes">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="7" r="5"/><rect x="13" y="13" width="8" height="8" rx="1"/><polygon points="20 4 15 12 22 12"/></svg>
+              <span>Shapes</span>
+            </button>
+            <button class="ribbon-btn big-btn" id="btn-insert-smartart" title="Process flows, Hierarchy, Cycles">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="6" height="6" rx="1"/><rect x="16" y="2" width="6" height="6" rx="1"/><rect x="16" y="14" width="6" height="6" rx="1"/><path d="M8 10h4v-5h4"/><path d="M12 10v7h4"/></svg>
+              <span>SmartArt</span>
+            </button>
+            <button class="ribbon-btn big-btn" id="btn-insert-chart" title="Bar, Pie, or Line Chart">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
+              <span>Chart</span>
+            </button>
+            <button class="ribbon-btn big-btn" id="btn-insert-textbox" title="Insert Movable Text Box">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="12" y1="9" x2="12" y2="13"/></svg>
+              <span>Text Box</span>
+            </button>
+            <button class="ribbon-btn big-btn" id="btn-insert-wordart" title="Artistic 3D and Styled Typography">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+              <span>WordArt</span>
+            </button>
+          </div>
+          <span class="group-label">Illustrations & Typography</span>
+        </div>
+
+        <!-- Maps & Currency & Symbols -->
+        <div class="ribbon-group">
+          <div class="ribbon-group-content flex-row gap-6">
+            <button class="ribbon-btn big-btn" id="btn-insert-map" title="Insert Interactive World Map">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              <span>World Map</span>
+            </button>
+            <button class="ribbon-btn big-btn" id="btn-insert-currency" title="Insert Currency Symbols (₹, $, €, £, ¥, ₿)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              <span>Currency</span>
+            </button>
+            <button class="ribbon-btn big-btn" id="btn-insert-symbol" title="Insert Special Symbols & Emojis">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+              <span>Symbols</span>
+            </button>
+          </div>
+          <span class="group-label">Media & Symbols</span>
+        </div>
+
+        <!-- Object Transformation Controls (Move Tool, Bounding Box, Free Transform Ctrl+T) -->
+        <div class="ribbon-group highlight-group">
+          <div class="ribbon-group-content flex-row gap-6">
+            <button class="ribbon-btn big-btn" id="btn-selection-tool" title="Selection / Move Tool (Click & Drag Objects)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 3 7 18 3-7 7-3L3 3z"/></svg>
+              <span>Move Tool</span>
+            </button>
+            <button class="ribbon-btn big-btn" id="btn-free-transform" title="Free Transform Scale & Rotate (Ctrl+T)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="5" width="14" height="14" rx="2" stroke-dasharray="2 2"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="19" cy="19" r="2"/><circle cx="5" cy="19" r="2"/><path d="M12 2v3"/><path d="M10 3l2-2 2 2"/></svg>
+              <span>Transform (Ctrl+T)</span>
+            </button>
+          </div>
+          <span class="group-label">Object Transform (Bounding Box)</span>
+        </div>
+      </div>
+
+      <!-- ================= DRAW TAB ================= -->
+      <div class="ribbon-panel" id="tab-draw">
+        <!-- Drawing Tools -->
+        <div class="ribbon-group">
+          <div class="ribbon-group-content flex-row gap-4 items-center">
+            <button class="draw-tool-btn active-tool" data-tool="select" title="Select / Cursor Mode">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 3 7 18 3-7 7-3L3 3z"/></svg>
+              <span>Select</span>
+            </button>
+            <button class="draw-tool-btn" data-tool="pen" title="Fine Ink Pen">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/></svg>
+              <span>Pen</span>
+            </button>
+            <button class="draw-tool-btn" data-tool="highlighter" title="Transparent Highlighter">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 11-6 6v3h3l6-6"/><path d="m22 12-4.6 4.6a2 2 0 0 1-2.8 0l-5.2-5.2a2 2 0 0 1 0-2.8L14 4"/></svg>
+              <span>Highlighter</span>
+            </button>
+            <button class="draw-tool-btn" data-tool="marker" title="Thick Marker">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="8" y="2" width="8" height="14" rx="2"/><path d="M9 16v6l3-2 3 2v-6"/></svg>
+              <span>Marker</span>
+            </button>
+            <button class="draw-tool-btn" data-tool="brush" title="Soft Watercolor Artistic Brush">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.37 2.63 14 7l-1.59-1.59a2 2 0 0 0-2.82 0L8 7l9 9 1.59-1.59a2 2 0 0 0 0-2.82L17 10l4.37-4.37a2.12 2.12 0 1 0-3-3Z"/><path d="M9 8c-2 3-4 3.5-7 4l8 8c.5-3 1-5 4-7"/></svg>
+              <span>Brush</span>
+            </button>
+            <button class="draw-tool-btn magical-brush-btn" data-tool="magical" title="Magical Sparkling Rainbow Brush!">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3z"/></svg>
+              <span>Magical</span>
+            </button>
+            <button class="draw-tool-btn" data-tool="eraser" title="Eraser tool">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></svg>
+              <span>Eraser</span>
+            </button>
+          </div>
+          <span class="group-label">Tools</span>
+        </div>
+
+        <!-- Draw Color & Thickness Settings -->
+        <div class="ribbon-group">
+          <div class="ribbon-group-content flex-row gap-6 items-center">
+            <div class="flex-col">
+              <label class="small-label">Color</label>
+              <input type="color" id="draw-color-picker" value="#3b82f6" class="color-picker-input">
+            </div>
+            <div class="flex-col">
+              <label class="small-label">Thickness: <span id="draw-thickness-val">3px</span></label>
+              <input type="range" id="draw-thickness" min="1" max="40" value="3" class="slider-input">
+            </div>
+            <button class="ribbon-btn small-btn" id="btn-clear-drawings" title="Clear all drawn ink on page">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+              <span>Clear Ink</span>
+            </button>
+          </div>
+          <span class="group-label">Ink Properties</span>
+        </div>
+      </div>
+
+      <!-- ================= FORMS TAB ================= -->
+      <div class="ribbon-panel" id="tab-forms">
+        <!-- Input Fields -->
+        <div class="ribbon-group">
+          <div class="ribbon-group-content flex-row gap-4">
+            <button class="ribbon-btn small-btn" id="btn-form-textfield" title="Insert Text Field">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="7 15 10 9 13 15"/><line x1="8" y1="13" x2="12" y2="13"/></svg>
+              <span>Text Field</span>
+            </button>
+            <button class="ribbon-btn small-btn" id="btn-form-combobox" title="Insert Combo Box">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><line x1="16" y1="5" x2="16" y2="19"/><polyline points="18 10 19 12 20 10"/></svg>
+              <span>Combo Box</span>
+            </button>
+            <button class="ribbon-btn small-btn" id="btn-form-dropdown" title="Insert Dropdown List">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="12" rx="2"/><polyline points="16 10 18 13 20 10"/></svg>
+              <span>Dropdown List</span>
+            </button>
+            <button class="ribbon-btn small-btn" id="btn-form-checkbox" title="Insert Checkbox">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              <span>Checkbox</span>
+            </button>
+            <button class="ribbon-btn small-btn" id="btn-form-radio" title="Insert Radio Button">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4" fill="currentColor"/></svg>
+              <span>Radio Button</span>
+            </button>
+          </div>
+          <span class="group-label">Standard Form Elements</span>
+        </div>
+
+        <!-- Specialized Form Fields -->
+        <div class="ribbon-group">
+          <div class="ribbon-group-content flex-row gap-4">
+            <button class="ribbon-btn small-btn" id="btn-form-signature" title="Insert Interactive Signature Pad">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 2 4 4-14 14H4v-4L18 2z"/><path d="M14 6l4 4"/><line x1="2" y1="22" x2="22" y2="22"/></svg>
+              <span>Signature Pad</span>
+            </button>
+            <button class="ribbon-btn small-btn" id="btn-form-image" title="Insert Image Field">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+              <span>Image Field</span>
+            </button>
+            <button class="ribbon-btn small-btn" id="btn-form-email" title="Insert Email Address Field">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>Email Field</span>
+            </button>
+            <button class="ribbon-btn small-btn" id="btn-form-phone" title="Insert Phone Number Field">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span>Phone Field</span>
+            </button>
+            <button class="ribbon-btn small-btn" id="btn-form-datetime" title="Insert Date & Time Field">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span>Date & Time</span>
+            </button>
+            <button class="ribbon-btn small-btn" id="btn-form-zip" title="Insert Zip Code Field">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Zip Code</span>
+            </button>
+            <button class="ribbon-btn small-btn" id="btn-form-cc" title="Insert Credit Card No Field">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+              <span>Credit Card No</span>
+            </button>
+          </div>
+          <span class="group-label">Smart Form Inputs</span>
+        </div>
+      </div>
+
+      <!-- ================= REFERENCES TAB ================= -->
+      <div class="ribbon-panel" id="tab-references">
+        <div class="ribbon-group">
+          <div class="ribbon-group-content flex-row gap-4">
+            <button class="ribbon-btn big-btn" id="btn-ref-toc" title="Generate / Update Table of Contents from headings">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/><polyline points="19 10 21 12 19 14"/></svg>
+              <span>Table of Contents</span>
+            </button>
+            <button class="ribbon-btn big-btn" id="btn-ref-addtext" title="Mark Heading Level for Table of Contents">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5h16v14"/><polyline points="9 9 12 6 15 9"/><line x1="12" y1="6" x2="12" y2="18"/></svg>
+              <span>Add Text / Level</span>
+            </button>
+          </div>
+          <span class="group-label">Table of Contents</span>
+        </div>
+
+        <div class="ribbon-group">
+          <div class="ribbon-group-content flex-row gap-4">
+            <button class="ribbon-btn big-btn" id="btn-ref-footnote" title="Insert Footnote at page bottom">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16"/><path d="M12 2v16"/><path d="M8 6h8"/></svg>
+              <span>Footnote</span>
+            </button>
+            <button class="ribbon-btn big-btn" id="btn-ref-watermark" title="Add / Customize Page Watermark">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+              <span>Watermark</span>
+            </button>
+            <button class="ribbon-btn big-btn" id="btn-ref-caption" title="Insert Figure / Table Caption">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="14" rx="2"/><line x1="3" y1="21" x2="15" y2="21"/></svg>
+              <span>Insert Caption</span>
+            </button>
+            <button class="ribbon-btn big-btn" id="btn-ref-tof" title="Insert Table of Figures">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/><circle cx="19" cy="6" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="19" cy="18" r="1"/></svg>
+              <span>Table of Figures</span>
+            </button>
+          </div>
+          <span class="group-label">Footnotes & Captions</span>
+        </div>
+      </div>
+
+      <!-- ================= LAYOUT TAB ================= -->
+      <div class="ribbon-panel" id="tab-layout">
+        <!-- Page Setup -->
+        <div class="ribbon-group">
+          <div class="ribbon-group-content flex-row gap-4">
+            <div class="flex-col">
+              <label class="small-label">Page Margins</label>
+              <select id="layout-margins" class="ribbon-select">
+                <option value="normal">Normal (1 in / 25mm)</option>
+                <option value="narrow">Narrow (0.5 in / 12mm)</option>
+                <option value="moderate">Moderate</option>
+                <option value="wide">Wide (1.5 in / 38mm)</option>
+              </select>
+            </div>
+            <div class="flex-col">
+              <label class="small-label">Page Size</label>
+              <select id="layout-pagesize" class="ribbon-select">
+                <option value="a4" selected>A4 (210 x 297 mm)</option>
+                <option value="letter">Letter (8.5 x 11 in)</option>
+                <option value="legal">Legal (8.5 x 14 in)</option>
+                <option value="a3">A3 (297 x 420 mm)</option>
+              </select>
+            </div>
+            <div class="flex-col">
+              <label class="small-label">Columns</label>
+              <select id="layout-columns" class="ribbon-select">
+                <option value="1" selected>One Column</option>
+                <option value="2">Two Columns</option>
+                <option value="3">Three Columns</option>
+              </select>
+            </div>
+          </div>
+          <span class="group-label">Page Setup</span>
+        </div>
+
+        <!-- Page Operations & Indents -->
+        <div class="ribbon-group">
+          <div class="ribbon-group-content flex-row gap-4 items-center">
+            <button class="ribbon-btn big-btn" id="btn-insert-page" title="Insert New Page / Page Break">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg>
+              <span>Insert Page</span>
+            </button>
+            <button class="ribbon-btn big-btn" id="btn-toggle-linenums" title="Show / Hide Line Numbers">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="6" x2="7" y2="6"/><line x1="4" y1="12" x2="7" y2="12"/><line x1="4" y1="18" x2="7" y2="18"/><line x1="11" y1="6" x2="20" y2="6"/><line x1="11" y1="12" x2="20" y2="12"/><line x1="11" y1="18" x2="20" y2="18"/></svg>
+              <span>Line Numbers</span>
+            </button>
+            <div class="flex-col">
+              <label class="small-label">Left Indent</label>
+              <input type="number" id="input-left-indent" min="0" max="100" value="0" step="5" class="small-num-input">
+            </div>
+            <div class="flex-col">
+              <label class="small-label">Right Indent</label>
+              <input type="number" id="input-right-indent" min="0" max="100" value="0" step="5" class="small-num-input">
+            </div>
+          </div>
+          <span class="group-label">Page & Paragraph Layout</span>
+        </div>
+      </div>
+
+      <!-- ================= DESIGN TAB ================= -->
+      <div class="ribbon-panel" id="tab-design">
+        <div class="ribbon-group">
+          <div class="ribbon-group-content flex-row gap-4">
+            <button class="theme-preset-btn active-preset" data-theme-preset="modern">
+              <div class="preset-preview modern-palette"></div>
+              <span>Modern</span>
+            </button>
+            <button class="theme-preset-btn" data-theme-preset="executive">
+              <div class="preset-preview executive-palette"></div>
+              <span>Executive</span>
+            </button>
+            <button class="theme-preset-btn" data-theme-preset="emerald">
+              <div class="preset-preview emerald-palette"></div>
+              <span>Emerald</span>
+            </button>
+            <button class="theme-preset-btn" data-theme-preset="purple">
+              <div class="preset-preview purple-palette"></div>
+              <span>Violet</span>
+            </button>
+            <button class="theme-preset-btn" data-theme-preset="crimson">
+              <div class="preset-preview crimson-palette"></div>
+              <span>Crimson</span>
+            </button>
+          </div>
+          <span class="group-label">Document Theme Palettes</span>
+        </div>
+
+        <div class="ribbon-group">
+          <div class="ribbon-group-content flex-row gap-4 items-center">
+            <div class="flex-col">
+              <label class="small-label">Page Color</label>
+              <input type="color" id="page-bg-color" value="#ffffff" class="color-picker-input">
+            </div>
+            <button class="ribbon-btn small-btn" id="btn-open-templates-design">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              <span>Browse 5 Templates</span>
+            </button>
+          </div>
+          <span class="group-label">Page Background & Templates</span>
+        </div>
+      </div>
+
+      <!-- ================= VIEW TAB ================= -->
+      <div class="ribbon-panel" id="tab-view">
+        <div class="ribbon-group">
+          <div class="ribbon-group-content flex-row gap-4">
+            <button class="ribbon-btn big-btn" id="btn-fullscreen" title="Toggle Fullscreen">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+              <span>Full Size</span>
+            </button>
+            <button class="ribbon-btn big-btn" id="btn-zoom-in" title="Zoom In (+10%)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              <span>Zoom In</span>
+            </button>
+            <button class="ribbon-btn big-btn" id="btn-zoom-out" title="Zoom Out (-10%)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              <span>Zoom Out</span>
+            </button>
+            <button class="ribbon-btn big-btn" id="btn-fit-page" title="Fit to Page (100%)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><polyline points="9 10 12 13 15 10"/></svg>
+              <span>Fit to Page</span>
+            </button>
+            <button class="ribbon-btn big-btn" id="btn-toggle-ruler" title="Show / Hide Document Ruler">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.3 8.7 8.7 21.3c-1 1-2.5 1-3.4 0l-2.6-2.6c-1-1-1-2.5 0-3.4L15.3 2.7c1-1 2.5-1 3.4 0l2.6 2.6c1 1 1 2.5 0 3.4Z"/><path d="m7.5 10.5 2 2"/><path d="m10.5 7.5 2 2"/><path d="m13.5 4.5 2 2"/></svg>
+              <span>Ruler</span>
+            </button>
+          </div>
+          <span class="group-label">Zoom & Display</span>
+        </div>
+      </div>
+
+      <!-- ================= PLUGINS TAB ================= -->
+      <div class="ribbon-panel" id="tab-plugins">
+        <div class="ribbon-group">
+          <div class="ribbon-group-content flex-row gap-4 items-center">
+            <button class="ribbon-btn big-btn highlight-plugin-btn" id="btn-plugin-bluetheme" title="Enable / Disable Softlite Blue Theme">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12A10 10 0 0 1 12 2z" fill="#2563eb"/></svg>
+              <span>Blue Theme Plugin</span>
+            </button>
+            <div class="plugin-info-badge">
+              <strong>Active Plugin:</strong> Softlite Deep Blue UI Theme v1.0
+            </div>
+          </div>
+          <span class="group-label">Installed Plugins</span>
+        </div>
+      </div>
+
+      <!-- ================= SETTINGS TAB ================= -->
+      <div class="ribbon-panel" id="tab-settings">
+        <div class="ribbon-group">
+          <div class="ribbon-group-content flex-row gap-6 items-center">
+            <div class="flex-col">
+              <label class="small-label">App UI Theme</label>
+              <select id="app-theme-selector" class="ribbon-select">
+                <option value="theme-light">Light Office Classic</option>
+                <option value="theme-dark">Dark Velvet Mode</option>
+                <option value="theme-blue">Softlite Deep Blue</option>
+                <option value="theme-slate">Slate Professional</option>
+              </select>
+            </div>
+            <div class="flex-col">
+              <label class="small-label">Default Font</label>
+              <select id="setting-default-font" class="ribbon-select">
+                <option value="Inter, sans-serif">Inter</option>
+                <option value="Roboto, sans-serif">Roboto</option>
+                <option value="Merriweather, serif">Merriweather</option>
+                <option value="Times New Roman, serif">Times New Roman</option>
+              </select>
+            </div>
+            <button class="ribbon-btn big-btn" id="btn-show-about-settings">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              <span>About & License</span>
+            </button>
+          </div>
+          <span class="group-label">Preferences & License</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Ruler Container -->
+    <div id="ruler-container" class="ruler-visible">
+      <div class="ruler-corner"></div>
+      <div id="ruler-horizontal">
+        <!-- Scale marks dynamically injected or CSS patterned -->
+        <div class="ruler-marks">
+          <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Workspace / Document Stage -->
+    <main id="workspace">
+      <!-- Watermark Container Overlay -->
+      <div id="watermark-overlay" class="watermark-text"></div>
+
+      <!-- Pages Container -->
+      <div id="pages-container">
+        <!-- Page 1 (Default Sheet) -->
+        <div class="paper-page" id="page-1" data-page-num="1">
+          <!-- Page Gutter for Line Numbers -->
+          <div class="line-numbers-gutter" id="gutter-1"></div>
+
+          <!-- Document Content Editable Area -->
+          <div class="page-content" contenteditable="true" spellcheck="true" id="editor-body">
+            <!-- Starting Default Content will be loaded from templates -->
+          </div>
+
+          <!-- Digital Ink Drawing Canvas Overlay for this page -->
+          <canvas class="drawing-canvas" id="canvas-draw-1"></canvas>
+
+          <!-- Floating Interactive Objects Layer (Shapes, Images, TextBoxes, Transform Bounding Box) -->
+          <div class="floating-objects-layer" id="objects-layer-1"></div>
+
+          <!-- Page Footer for Footnotes and Page Numbers -->
+          <div class="page-footer">
+            <div class="footnotes-area" id="footnotes-1"></div>
+            <div class="page-num-display">Page 1</div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Interactive Object Bounding Box Overlay (Photoshop / Illustrator / Canva style) -->
+    <div id="bounding-box-overlay" class="bounding-box hidden">
+      <!-- Top Rotation Pivot & Handle -->
+      <div class="rotation-handle" id="handle-rotate" title="Rotate Object"></div>
+      <div class="rotation-stem"></div>
+
+      <!-- 8 Resize Handles: Corner & Edge Dots -->
+      <div class="resize-handle handle-nw" data-handle="nw"></div>
+      <div class="resize-handle handle-n" data-handle="n"></div>
+      <div class="resize-handle handle-ne" data-handle="ne"></div>
+      <div class="resize-handle handle-e" data-handle="e"></div>
+      <div class="resize-handle handle-se" data-handle="se"></div>
+      <div class="resize-handle handle-s" data-handle="s"></div>
+      <div class="resize-handle handle-sw" data-handle="sw"></div>
+      <div class="resize-handle handle-w" data-handle="w"></div>
+
+      <!-- Floating Quick Actions Bar on Selected Object -->
+      <div class="object-action-bar">
+        <button class="obj-btn" id="obj-delete" title="Delete Object">🗑️</button>
+        <button class="obj-btn" id="obj-front" title="Bring to Front">⬆️</button>
+        <button class="obj-btn" id="obj-back" title="Send to Back">⬇️</button>
+        <span class="obj-info-pill" id="obj-dimensions">W: 200px H: 150px</span>
+      </div>
+    </div>
+
+    <!-- Status Bar (Bottom) -->
+    <footer id="statusbar">
+      <div class="status-left">
+        <span class="status-item" id="status-pages">Page 1 of 1</span>
+        <span class="status-item" id="status-words">0 words</span>
+        <span class="status-item" id="status-chars">0 characters</span>
+        <span class="status-item text-green" id="status-save">Saved</span>
+      </div>
+      <div class="status-right">
+        <button class="status-shortcut-btn" id="btn-shortcuts-hint" title="View Key Shortcuts">⌨️ Shortcuts</button>
+        <span class="status-zoom-val" id="zoom-percent">100%</span>
+        <input type="range" id="zoom-slider" min="50" max="200" value="100" class="zoom-slider-input" title="Zoom">
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ================= MODALS & DIALOGS ================= -->
+
+  <!-- 1. START / TEMPLATES MODAL (Opens automatically at start) -->
+  <div class="modal-backdrop" id="modal-start">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-header">
+        <div class="modal-title-with-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <div>
+            <h2>softlite-document fometer</h2>
+            <p class="subtitle">Select a template to start or open an existing file</p>
+          </div>
+        </div>
+        <div class="modal-top-actions">
+          <label class="btn-primary file-upload-label" title="Open an HTML, JSON or Text file">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <span>Open File</span>
+            <input type="file" id="input-open-file" accept=".html,.htm,.txt,.json,.softlite" style="display:none;">
+          </label>
+          <button class="modal-close-btn" id="btn-close-start-modal">&times;</button>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <div class="section-heading">
+          <h3>Choose from 5 Professional Templates</h3>
+          <p>Get started quickly with carefully crafted layouts</p>
+        </div>
+
+        <div class="templates-grid">
+          <!-- Template 1: Blank Document -->
+          <div class="template-card" data-template="blank">
+            <div class="template-thumbnail blank-thumb">
+              <div class="thumb-paper">
+                <span class="thumb-line w-40"></span>
+                <span class="thumb-line w-80"></span>
+                <span class="thumb-line w-60"></span>
+              </div>
+            </div>
+            <div class="template-info">
+              <h4>1. Blank Document</h4>
+              <p>Clean blank slate with default standard margins and formatting.</p>
+            </div>
+          </div>
+
+          <!-- Template 2: Professional Resume -->
+          <div class="template-card" data-template="resume">
+            <div class="template-thumbnail resume-thumb">
+              <div class="thumb-paper">
+                <div class="thumb-header-badge"></div>
+                <span class="thumb-line w-50"></span>
+                <span class="thumb-line w-90"></span>
+                <span class="thumb-line w-75"></span>
+                <span class="thumb-line w-85"></span>
+              </div>
+            </div>
+            <div class="template-info">
+              <h4>2. Modern Resume / CV</h4>
+              <p>Executive layout with skills grid, timeline, and contact badges.</p>
+            </div>
+          </div>
+
+          <!-- Template 3: Formal Business Letter -->
+          <div class="template-card" data-template="letter">
+            <div class="template-thumbnail letter-thumb">
+              <div class="thumb-paper">
+                <div class="thumb-letterhead"></div>
+                <span class="thumb-line w-30"></span>
+                <span class="thumb-line w-90"></span>
+                <span class="thumb-line w-90"></span>
+                <span class="thumb-line w-50"></span>
+                <div class="thumb-sig"></div>
+              </div>
+            </div>
+            <div class="template-info">
+              <h4>3. Formal Business Letter</h4>
+              <p>Official correspondence with sender letterhead and signature spot.</p>
+            </div>
+          </div>
+
+          <!-- Template 4: Invoice & Billing -->
+          <div class="template-card" data-template="invoice">
+            <div class="template-thumbnail invoice-thumb">
+              <div class="thumb-paper">
+                <div class="thumb-table-header"></div>
+                <div class="thumb-table-row"></div>
+                <div class="thumb-table-row"></div>
+                <span class="thumb-line w-40 align-right"></span>
+              </div>
+            </div>
+            <div class="template-info">
+              <h4>4. Professional Invoice</h4>
+              <p>Itemized tax invoice table, subtotal, tax calculation, and payment details.</p>
+            </div>
+          </div>
+
+          <!-- Template 5: Project Report / Proposal -->
+          <div class="template-card" data-template="report">
+            <div class="template-thumbnail report-thumb">
+              <div class="thumb-paper">
+                <div class="thumb-report-title"></div>
+                <div class="thumb-chart-box"></div>
+                <span class="thumb-line w-80"></span>
+                <span class="thumb-line w-90"></span>
+              </div>
+            </div>
+            <div class="template-info">
+              <h4>5. Project Report & Proposal</h4>
+              <p>Academic or corporate report with executive summary, tables and charts.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-secondary" id="btn-start-blank">Start with Blank Document</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. ABOUT & LICENSE MODAL (softlite-document fometer built 100 2027 release 15/10/26) -->
+  <div class="modal-backdrop hidden" id="modal-about">
+    <div class="modal-dialog modal-md">
+      <div class="modal-header">
+        <div class="modal-title-with-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <h2>About softlite-document fometer</h2>
+        </div>
+        <button class="modal-close-btn" id="btn-close-about-modal">&times;</button>
+      </div>
+
+      <div class="modal-body about-body">
+        <div class="about-hero">
+          <div class="app-big-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <h3>softlite-document fometer</h3>
+          <div class="about-meta-grid">
+            <div><strong>Version:</strong> built 100 2027</div>
+            <div><strong>Release Date:</strong> 15/10/26</div>
+            <div><strong>Engine:</strong> HTML5 / CSS3 / ES2026 Engine</div>
+            <div><strong>Author:</strong> Softlite Open Source Project (GitHub)</div>
+          </div>
+        </div>
+
+        <div class="license-section">
+          <h4>Softlite Open-Source License</h4>
+          <p class="license-desc">Retrieved from GitHub / Softlite Org Repository:</p>
+          <div class="license-text-box">
+<pre>
+SOFTLITE PUBLIC OPEN SOURCE LICENSE (SPOSL-2027)
+Product: softlite-document fometer
+Build: 100 2027 | Release Date: 15/10/26
+Repository: https://github.com/softlite/softlite-document-formatter
+
+Copyright (c) 2026-2027 Softlite Open Source Contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+1. The above copyright notice and this permission notice shall be included
+   in all copies or substantial portions of the Software.
+2. Built with pure web standards: HTML5, CSS3, and JavaScript.
+3. Features Free Transform, Ink Canvas, Fillable Forms, and PDF Export.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-primary" id="btn-ack-about">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. FIND & REPLACE MODAL -->
+  <div class="modal-backdrop hidden" id="modal-find-replace">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-header">
+        <h3>Find & Replace</h3>
+        <button class="modal-close-btn" id="btn-close-find-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Find what:</label>
+          <input type="text" id="find-input" class="form-input" placeholder="Text to search...">
+        </div>
+        <div class="form-group">
+          <label>Replace with:</label>
+          <input type="text" id="replace-input" class="form-input" placeholder="Replacement text...">
+        </div>
+        <div class="find-count-pill" id="find-matches-count">0 matches found</div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" id="btn-find-next">Find Next</button>
+        <button class="btn-primary" id="btn-replace-one">Replace</button>
+        <button class="btn-primary" id="btn-replace-all">Replace All</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. SIGNATURE PAD MODAL -->
+  <div class="modal-backdrop hidden" id="modal-signature">
+    <div class="modal-dialog modal-md">
+      <div class="modal-header">
+        <h3>Interactive Signature Pad</h3>
+        <button class="modal-close-btn" id="btn-close-sig-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Draw your signature with your mouse or touch below:</p>
+        <div class="sig-canvas-wrap">
+          <canvas id="sig-pad-canvas" width="500" height="200"></canvas>
+          <div class="sig-line-mark"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" id="btn-sig-clear">Clear</button>
+        <button class="btn-primary" id="btn-sig-insert">Insert Signature into Document</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. INSERT TABLE MODAL -->
+  <div class="modal-backdrop hidden" id="modal-table">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-header">
+        <h3>Insert Table</h3>
+        <button class="modal-close-btn" id="btn-close-table-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Number of Columns:</label>
+          <input type="number" id="tbl-cols" class="form-input" value="3" min="1" max="10">
+        </div>
+        <div class="form-group">
+          <label>Number of Rows:</label>
+          <input type="number" id="tbl-rows" class="form-input" value="3" min="1" max="30">
+        </div>
+        <div class="form-group">
+          <label><input type="checkbox" id="tbl-header-check" checked> Include Header Row</label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-primary" id="btn-confirm-table">Create Table</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. INSERT CHART MODAL -->
+  <div class="modal-backdrop hidden" id="modal-chart">
+    <div class="modal-dialog modal-md">
+      <div class="modal-header">
+        <h3>Insert Chart</h3>
+        <button class="modal-close-btn" id="btn-close-chart-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Chart Type:</label>
+          <select id="chart-type-sel" class="form-input">
+            <option value="bar">Bar Chart</option>
+            <option value="pie">Pie Chart</option>
+            <option value="line">Line Graph</option>
+            <option value="doughnut">Doughnut Chart</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Chart Title:</label>
+          <input type="text" id="chart-title-input" class="form-input" value="Performance Overview">
+        </div>
+        <div class="form-group">
+          <label>Labels (comma-separated):</label>
+          <input type="text" id="chart-labels-input" class="form-input" value="Q1, Q2, Q3, Q4">
+        </div>
+        <div class="form-group">
+          <label>Values (comma-separated):</label>
+          <input type="text" id="chart-values-input" class="form-input" value="45, 78, 62, 95">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-primary" id="btn-confirm-chart">Insert Chart</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. INSERT SHAPE MODAL -->
+  <div class="modal-backdrop hidden" id="modal-shape">
+    <div class="modal-dialog modal-md">
+      <div class="modal-header">
+        <h3>Insert Shape</h3>
+        <button class="modal-close-btn" id="btn-close-shape-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="shapes-palette">
+          <div class="shape-opt" data-shape="rect">
+            <div class="shape-preview-box rect-shape"></div>
+            <span>Rectangle</span>
+          </div>
+          <div class="shape-opt" data-shape="round-rect">
+            <div class="shape-preview-box round-rect-shape"></div>
+            <span>Rounded</span>
+          </div>
+          <div class="shape-opt" data-shape="circle">
+            <div class="shape-preview-box circle-shape"></div>
+            <span>Circle / Oval</span>
+          </div>
+          <div class="shape-opt" data-shape="triangle">
+            <div class="shape-preview-box triangle-shape"></div>
+            <span>Triangle</span>
+          </div>
+          <div class="shape-opt" data-shape="star">
+            <div class="shape-preview-box star-shape"></div>
+            <span>Star</span>
+          </div>
+          <div class="shape-opt" data-shape="arrow-right">
+            <div class="shape-preview-box arrow-shape"></div>
+            <span>Arrow</span>
+          </div>
+          <div class="shape-opt" data-shape="diamond">
+            <div class="shape-preview-box diamond-shape"></div>
+            <span>Diamond</span>
+          </div>
+          <div class="shape-opt" data-shape="heart">
+            <div class="shape-preview-box heart-shape"></div>
+            <span>Heart</span>
+          </div>
+        </div>
+        <div class="form-group mt-10">
+          <label>Shape Fill Color:</label>
+          <input type="color" id="shape-fill-color" value="#3b82f6" class="color-picker-input">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-primary" id="btn-confirm-shape">Insert Shape</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. WORDART MODAL -->
+  <div class="modal-backdrop hidden" id="modal-wordart">
+    <div class="modal-dialog modal-md">
+      <div class="modal-header">
+        <h3>Insert WordArt</h3>
+        <button class="modal-close-btn" id="btn-close-wordart-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>WordArt Text:</label>
+          <input type="text" id="wordart-text-input" class="form-input" value="SOFTLITE">
+        </div>
+        <label>Select Typography Style:</label>
+        <div class="wordart-grid">
+          <div class="wordart-card active-wordart" data-style="wa-neon">
+            <span class="wa-preview wa-neon">Neon Glow</span>
+          </div>
+          <div class="wordart-card" data-style="wa-3d">
+            <span class="wa-preview wa-3d">3D Extrude</span>
+          </div>
+          <div class="wordart-card" data-style="wa-rainbow">
+            <span class="wa-preview wa-rainbow">Rainbow</span>
+          </div>
+          <div class="wordart-card" data-style="wa-gold">
+            <span class="wa-preview wa-gold">Gold Luxury</span>
+          </div>
+          <div class="wordart-card" data-style="wa-retro">
+            <span class="wa-preview wa-retro">Retro Wave</span>
+          </div>
+          <div class="wordart-card" data-style="wa-hollow">
+            <span class="wa-preview wa-hollow">Hollow Bold</span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-primary" id="btn-confirm-wordart">Insert WordArt</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. WATERMARK MODAL -->
+  <div class="modal-backdrop hidden" id="modal-watermark">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-header">
+        <h3>Page Watermark</h3>
+        <button class="modal-close-btn" id="btn-close-wm-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Watermark Text:</label>
+          <input type="text" id="wm-text-input" class="form-input" value="CONFIDENTIAL">
+        </div>
+        <div class="form-group">
+          <label>Presets:</label>
+          <div class="flex-row gap-4">
+            <button class="btn-secondary text-xs" onclick="document.getElementById('wm-text-input').value='CONFIDENTIAL'">CONFIDENTIAL</button>
+            <button class="btn-secondary text-xs" onclick="document.getElementById('wm-text-input').value='DRAFT'">DRAFT</button>
+            <button class="btn-secondary text-xs" onclick="document.getElementById('wm-text-input').value='COPY'">COPY</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Opacity: <span id="wm-opacity-val">15%</span></label>
+          <input type="range" id="wm-opacity-slider" min="5" max="60" value="15" class="slider-input">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" id="btn-wm-remove">Remove Watermark</button>
+        <button class="btn-primary" id="btn-wm-apply">Apply Watermark</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. CURRENCY & SYMBOLS MODAL -->
+  <div class="modal-backdrop hidden" id="modal-symbols">
+    <div class="modal-dialog modal-md">
+      <div class="modal-header">
+        <h3 id="symbols-modal-title">Insert Currency / Symbol</h3>
+        <button class="modal-close-btn" id="btn-close-symbols-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="symbols-grid" id="symbols-container">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11. SHORTCUTS CHEATSHEET MODAL -->
+  <div class="modal-backdrop hidden" id="modal-shortcuts">
+    <div class="modal-dialog modal-md">
+      <div class="modal-header">
+        <h3>Keyboard Shortcuts Cheatsheet</h3>
+        <button class="modal-close-btn" id="btn-close-shortcuts-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <table class="shortcuts-table">
+          <thead><tr><th>Action</th><th>Shortcut</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Increment Font Size</strong></td><td><kbd>Alt</kbd> + <kbd>Ctrl</kbd> + <kbd>A</kbd></td></tr>
+            <tr><td><strong>Decrement Font Size</strong></td><td><kbd>Alt</kbd> + <kbd>Ctrl</kbd> + <kbd>S</kbd></td></tr>
+            <tr><td><strong>Free Transform (Scale/Rotate)</strong></td><td><kbd>Ctrl</kbd> + <kbd>T</kbd></td></tr>
+            <tr><td><strong>Align Left</strong></td><td><kbd>Ctrl</kbd> + <kbd>L</kbd></td></tr>
+            <tr><td><strong>Align Center</strong></td><td><kbd>Ctrl</kbd> + <kbd>E</kbd></td></tr>
+            <tr><td><strong>Align Right</strong></td><td><kbd>Ctrl</kbd> + <kbd>R</kbd></td></tr>
+            <tr><td><strong>Justify</strong></td><td><kbd>Ctrl</kbd> + <kbd>J</kbd></td></tr>
+            <tr><td><strong>Bold</strong></td><td><kbd>Ctrl</kbd> + <kbd>B</kbd></td></tr>
+            <tr><td><strong>Italic</strong></td><td><kbd>Ctrl</kbd> + <kbd>I</kbd></td></tr>
+            <tr><td><strong>Underline</strong></td><td><kbd>Ctrl</kbd> + <kbd>U</kbd></td></tr>
+            <tr><td><strong>Find</strong></td><td><kbd>Ctrl</kbd> + <kbd>F</kbd></td></tr>
+            <tr><td><strong>Replace</strong></td><td><kbd>Ctrl</kbd> + <kbd>H</kbd></td></tr>
+            <tr><td><strong>Save</strong></td><td><kbd>Ctrl</kbd> + <kbd>S</kbd></td></tr>
+            <tr><td><strong>Print / Export PDF</strong></td><td><kbd>Ctrl</kbd> + <kbd>P</kbd></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-primary" id="btn-ack-shortcuts">Got it</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
